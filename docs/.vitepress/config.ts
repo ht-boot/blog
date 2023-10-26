@@ -34,7 +34,10 @@ export default defineConfig({
       },
       {
         text: "💻 框架",
-        items: [{ text: "🟩 Vue", link: "/frame/base_vue3.html" }],
+        items: [
+          { text: "🟩 Vue", link: "/frame/base_vue3.html" },
+          { text: "🟦 Electron", link: "/electron/README.html" },
+        ],
       },
       {
         text: "🪲 BUG",
@@ -68,6 +71,10 @@ export default defineConfig({
             { text: "📄 JS 深拷贝与浅拷贝", link: "/JavaScript/clone" },
             { text: "📄 JS 防抖与节流", link: "/JavaScript/debounce_throttle" },
             { text: "📄 JS 优化代码分支", link: "/JavaScript/condition" },
+            {
+              text: "📄 JS 并发任务控制",
+              link: "/JavaScript/concurrencyRequest",
+            },
           ],
         },
       ],
@@ -126,6 +133,14 @@ export default defineConfig({
             { text: "󠁇🔸 响应式数据", link: "/frame/base_vue3" },
             { text: "󠁇🔸 computed watch", link: "/frame/computed_watch" },
             { text: "󠁇🔸 Router", link: "/frame/router" },
+            {
+              text: "󠁇🔸 单页面首屏加载优化",
+              link: "/frame/performance_optimization",
+            },
+            {
+              text: "󠁇🔸 computed 劫持 v-model",
+              link: "/frame/useVModel",
+            },
           ],
         },
       ],
