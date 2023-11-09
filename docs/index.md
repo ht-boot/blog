@@ -3,27 +3,20 @@
 layout: home
 
 hero:
-  name: "🐼『 ht的博客 』"
+  name: "『 ht的博客 』"
   tagline: 风起于清平之末，浪成于微澜之间。
+  image:
+    src: /vite_run_image.png
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: ⭐ 关于我
+      link: /about/about.md
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 🛠️ 开发工具
+      link: /tools/vite_config.html
 
 features:
   - icon: ⚡️
     title: 这里是功能区 1
     details: 这里是功能区 1 详情信息
-    link: /api-examples
-  - icon: 🖖
-    title: 这里是功能区 2
-    details: 这里是功能区 2 详情信息
-    link: /api-examples
-  - icon: 🛠️
-    title: tools
-    details: 这里是功能区 3 详情信息
-    link: /api-examples
 ---

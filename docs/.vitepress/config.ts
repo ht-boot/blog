@@ -35,8 +35,9 @@ export default defineConfig({
       {
         text: "💻 框架",
         items: [
-          { text: "🟩 Vue", link: "/frame/base_vue3.html" },
-          { text: "🟦 Electron", link: "/electron/README.html" },
+          { text: " Vue", link: "/frame/base_vue3.html" },
+          { text: " React", link: "/React/README.html" },
+          { text: " Electron", link: "/electron/README.html" },
         ],
       },
       {
@@ -144,11 +145,16 @@ export default defineConfig({
           ],
         },
       ],
+      "/React/": [
+        {
+          text: "React 18",
+          collapsed: false,
+          items: [{ text: "󠁇🔸hook", link: "/React/hook" }],
+        },
+      ],
     },
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
-    ],
+    socialLinks: [{ icon: "github", link: "https://github.com/ht-boot" }],
 
     footer: {
       message: "Released under the MIT License.",
