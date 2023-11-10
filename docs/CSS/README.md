@@ -3,12 +3,13 @@ title: css
 outline: deep
 author: ht
 date: 2022-3
-tags: ['CSS', '变量']
+tags: ["CSS", "变量"]
 ---
 
-### ✨✨ 教程推荐
+::: tip
+层叠样式表（Cascading Style Sheets，缩写为 CSS）是一种样式表语言，用来描述 HTML 或 XML（包括如 SVG、MathML 或 XHTML 之类的 XML 分支语言）文档的呈现方式。
+:::
 
-你是 Web 开发的新手，请务必阅读我们的 [CSS 基础](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics "MDN")。以学习 CSS 的含义和用法。
+## ✨✨ 参考资料
 
-此页面用于记录 CSS 的妙用。 更多内容待后续更新。。。
-
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS)

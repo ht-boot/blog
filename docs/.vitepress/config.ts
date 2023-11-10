@@ -35,7 +35,7 @@ export default defineConfig({
       {
         text: "💻 框架",
         items: [
-          { text: " Vue", link: "/frame/base_vue3.html" },
+          { text: " Vue", link: "/vue/README.html" },
           { text: " React", link: "/React/README.html" },
           { text: " Electron", link: "/electron/README.html" },
         ],
@@ -75,6 +75,14 @@ export default defineConfig({
             {
               text: "📄 JS 并发任务控制",
               link: "/JavaScript/concurrencyRequest",
+            },
+            {
+              text: "📄 JS 事件循环",
+              link: "/JavaScript/event_loops",
+            },
+            {
+              text: "📄 Axios、Fetch",
+              link: "/JavaScript/request_api",
             },
           ],
         },
@@ -126,21 +134,21 @@ export default defineConfig({
           ],
         },
       ],
-      "/frame/": [
+      "/vue/": [
         {
-          text: "🟩 Vue3",
+          text: "🟩 Vue",
           collapsed: false,
           items: [
-            { text: "󠁇🔸 响应式数据", link: "/frame/base_vue3" },
-            { text: "󠁇🔸 computed watch", link: "/frame/computed_watch" },
-            { text: "󠁇🔸 Router", link: "/frame/router" },
+            // { text: "󠁇🔸 响应式数据", link: "/vue/base_vue3" },
+            // { text: "󠁇🔸 computed watch", link: "/vue/computed_watch" },
+            { text: "󠁇🔸 Router", link: "/vue/router" },
             {
               text: "󠁇🔸 单页面首屏加载优化",
-              link: "/frame/performance_optimization",
+              link: "/vue/performance_optimization",
             },
             {
               text: "󠁇🔸 computed 劫持 v-model",
-              link: "/frame/useVModel",
+              link: "/vue/useVModel",
             },
           ],
         },
