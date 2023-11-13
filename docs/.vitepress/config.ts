@@ -84,6 +84,10 @@ export default defineConfig({
               text: "📄 Axios、Fetch",
               link: "/JavaScript/request_api",
             },
+            {
+              text: "📄 http 与 https",
+              link: "/JavaScript/http_and_https",
+            },
           ],
         },
       ],
@@ -157,7 +161,13 @@ export default defineConfig({
         {
           text: "React 18",
           collapsed: false,
-          items: [{ text: "󠁇🔸hook", link: "/React/hook" }],
+          items: [
+            { text: "󠁇🔸style 引入", link: "/React/style_module_import" },
+            { text: "󠁇🔸hook", link: "/React/hook" },
+            { text: "󠁇🔸mobx", link: "/React/mobx" },
+            { text: "󠁇🔸redux", link: "/React/redux" },
+            { text: "󠁇🔸router", link: "/React/router" },
+          ],
         },
       ],
     },

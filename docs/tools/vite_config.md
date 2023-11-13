@@ -1,9 +1,9 @@
 ---
-title: Vue3 computed watch
+title: vite.config.ts 配置
 outline: deep
 author: ht
 date: 2021-5
-tags: ["vscode", "JavaScript"]
+tags: ["vscode", "vite"]
 ---
 
 ### 🌮 vite.config.ts 文件配置
@@ -58,7 +58,7 @@ css: {
 
 #### 🍊 路径别名与智能路径提示
 
-定义路径别名是我们常用的一个功能， 我们通常会给 src 定义别名为@
+定义路径别名是我们常用的一个功能， 我们通常会给 src 定义别名为 @
 
 ```ts
 // vite.config.ts
@@ -85,11 +85,11 @@ export default defineConfig({
 }
 ```
 
-如果运行不了或报错，安装@types/node
+如果 `path` 报错，安装@types/node
 
 ```sh
 
-npm install @types/node
+npm install @types/node -D
 
 ```
 
