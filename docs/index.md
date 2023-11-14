@@ -12,7 +12,7 @@ hero:
       text: ⭐ 关于我
       link: /about/about.md
     - theme: alt
-      text: 🛠️ 开发工具
+      text: ✏ 我的笔记
       link: /tools/vite_config.html
 
 features:

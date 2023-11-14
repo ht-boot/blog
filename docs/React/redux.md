@@ -230,4 +230,208 @@ export default counterSlice.reducer;
 
 ## 如何实现异步请求？
 
-使用 `createAsyncThunk` 请求数据。
+> 使用 `createAsyncThunk` 搭配 `createSlice` 中的 `extraReducers` 选项，实现异步请求处理。
+> 示例如下：
+
+```ts
+// /store/storeSlice/counterSlice.ts
+
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+interface TCounterState {
+  value: number;
+  userList: [];
+}
+
+const initialState: TCounterState = {
+  value: 10,
+  userList: [],
+};
+
+// 模拟请求
+const getUserList = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        {
+          user_id: 1,
+          name: "张三",
+          age: 25,
+          gender: "男",
+          occupation: "学生",
+          income: 5000,
+        },
+        {
+          user_id: 2,
+          name: "李四",
+          age: 30,
+          gender: "男",
+          occupation: "工程师",
+          income: 10000,
+        },
+      ]);
+    }, 3000);
+  });
+};
+
+// 异步执行
+// thunk函数允许执行异步逻辑, 通常用于发出异步请求。
+// createAsyncThunk 创建一个异步action，方法触发的时候会有三种状态：
+// pending（进行中）、fulfilled（成功）、rejected（失败）
+export const getUserListThunk = createAsyncThunk(
+  "counter/getUserList",
+  async () => {
+    const res = await getUserList();
+    return res;
+  }
+);
+
+export const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment: (state, action) => {
+      state.value += 1;
+      console.log(action);
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+  },
+
+  extraReducers(builder) {
+    builder
+      .addCase(getUserListThunk.fulfilled, (state, action) => {
+        state.userList = action.payload;
+      })
+      .addCase(getUserListThunk.rejected, (state, err) => {
+        console.log(err);
+      });
+  },
+});
+
+export const { increment, decrement } = counterSlice.actions;
+
+export default counterSlice.reducer;
+```
+
+> 组件中使用
+
+```tsx
+import { useSelector, useDispatch } from "react-redux";
+import { getUserListThunk } from "@/store/storeSlice/counterSlice";
+import { RootState } from "@/store";
+
+const Home = () => {
+  // 获取异步请求的返回数据
+  const userList = useSelector((state: RootState) => state.counter.userList);
+
+  const dispatch = useDispatch();
+
+  return (
+    <div className="home_page">
+      {/* 异步执行 */}
+      <button onClick={() => dispatch(getUserListThunk())}>异步执行</button>
+      {/* 返回结果展示 */}
+      <p>userList: {JSON.stringify(userList)}</p>
+    </div>
+  );
+};
+
+export default Home;
+```
+
+## 如何实现数据持久化？
+
+这里我们使用的 `redux-persist` 插件，具体实现如下：
+
+```bash
+# 安装插件
+npm i redux-persist
+```
+
+在文件 `src/store/index.ts` 中，引入插件
+
+```ts
+import { configureStore } from "@reduxjs/toolkit";
+// 仓库碎片（模块）
+import counterReducer from "./storeSlice/counterSlice";
+// 合并碎片（模块）
+import { combineReducers } from "redux";
+
+// 数据持久化
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/es/storage";
+
+/**
+ * @description 缓存数据配置
+ * @param key  标识存储在本地存储中的数据
+ * @param storage 持久化存储引擎，默认是localStorage
+ * @param blacklist  黑名单，不持久化指定reducer的状态
+ * @param whitelist // 白名单，只持久化指定reducer的状态
+ * @param transforms: [myTransform], // 转换器，可以自定义转换函数来改变持久化存储的数据格式
+ */
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["modalInfo"], // 写在这块的数据不会存在storage
+  // whitelist: ["counterReducer"],
+  // transforms: [],
+};
+
+// 仓库碎片合并
+const reducers = combineReducers({
+  counterReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      //关闭序列化状态检测中间件
+      serializableCheck: false,
+    }),
+});
+
+// 数据持久化存储
+export const persist = persistStore(store);
+
+// 从 store 本身推断出 `RootState` 和 `AppDispatch` 类型
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+```
+
+### 组件中使用
+
+导入数据持久化存储对象 `persist`, 与组件 `PersistGate`, 并将 `persist` 作为 `prop` 传入 `persistor`。
+
+```tsx
+// src/main.tsx
+
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import { BrowserRouter } from "react-router-dom";
+import { store, persist } from "@/store/index";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import "./index.less";
+
+const rootElement = document.getElementById("root")!;
+
+const app = ReactDOM.createRoot(rootElement);
+
+app.render(
+  <BrowserRouter>
+    {/* 仓库 */}
+    <Provider store={store}>
+      {/* 持久化 */}
+      <PersistGate persistor={persist}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </BrowserRouter>
+);
+```

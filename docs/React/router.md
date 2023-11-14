@@ -91,6 +91,8 @@ export default App;
 
 #### 路由嵌套
 
+示例：
+
 ```jsx
 function App() {
   return (
@@ -104,7 +106,10 @@ function App() {
 }
 ```
 
-如果需要内部组件修改，也可以采用<Outlet/>来直接实现，如下所示
+如果需要内部组件修改，也可以采用`<Outlet/>`来直接实现，
+`<Outlet/>` 用于子路由在父级路由页面的展示位置。
+
+如下所示：
 
 ```js
 function App() {
