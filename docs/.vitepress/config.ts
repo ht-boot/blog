@@ -60,7 +60,10 @@ export default defineConfig({
           text: "📁 JavaScript",
           collapsed: false,
           items: [
-            { text: "📄 JS 方法（数组/对象）", link: "/JavaScript/function" },
+            {
+              text: "📄 JS 方法（数组/对象）",
+              link: "/JavaScript/function",
+            },
             { text: "📄 JS Map/Set", link: "/JavaScript/map_set" },
             {
               text: "📄 JS call/apply/bind",
@@ -87,6 +90,10 @@ export default defineConfig({
             {
               text: "📄 http 与 https",
               link: "/JavaScript/http_and_https",
+            },
+            {
+              text: "📄 什么是JWT",
+              link: "/JavaScript/JWT",
             },
           ],
         },
@@ -146,13 +153,28 @@ export default defineConfig({
             // { text: "󠁇🔸 响应式数据", link: "/vue/base_vue3" },
             // { text: "󠁇🔸 computed watch", link: "/vue/computed_watch" },
             { text: "󠁇🔸 Router", link: "/vue/router" },
+
+            {
+              text: "󠁇📁 Vue2",
+              collapsed: false,
+            },
+            {
+              text: "󠁇📁 Vue3",
+              collapsed: false,
+              items: [
+                {
+                  text: "󠁇🔸 computed 劫持 v-model",
+                  link: "/vue/useVModel",
+                },
+                {
+                  text: "󠁇🔸Vue3 $attrs的使用",
+                  link: "/vue/$attrs",
+                },
+              ],
+            },
             {
               text: "󠁇🔸 单页面首屏加载优化",
               link: "/vue/performance_optimization",
-            },
-            {
-              text: "󠁇🔸 computed 劫持 v-model",
-              link: "/vue/useVModel",
             },
           ],
         },

@@ -2,11 +2,13 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
+# 主页内容
 hero:
   name: "『 ht的博客 』"
   tagline: 风起于清平之末，浪成于微澜之间。
   image:
-    src: /vite_run_image.png
+    src: /1.png
+    alt: 图片来源 azuki.com
   actions:
     - theme: brand
       text: ⭐ 关于我
@@ -16,7 +18,10 @@ hero:
       link: /tools/vite_config.html
 
 features:
-  - icon: ⚡️
-    title: 这里是功能区 1
-    details: 这里是功能区 1 详情信息
+  - title: 📚 知识管理
+    details: 记录学习笔记，方便后续查阅。
 ---
+
+<div>
+自定义内容
+</div>
